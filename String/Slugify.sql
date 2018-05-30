@@ -3,6 +3,7 @@ as
 begin
     declare @IncorrectCharLoc int
     set @str = replace(replace(lower(@str),'.',' '),'''','')
+	-- remoce accents
 	set @str  =  convert(varchar(512), @str) collate Cyrillic_General_CI_AI
     -- remove non alphanumerics:
     set @IncorrectCharLoc = patindex('%[^0-9a-z -]%',@str)
